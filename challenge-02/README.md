@@ -24,15 +24,15 @@ Crie uma função que adicione um valor à variável criada acima, e retorne a s
 Onde VALOR é o novo valor da variável.
 */
 function addValue() {
-    y = 'O valor da variável agora é VALOR. Onde VALOR é o novo valor da variável.';
-    return y;
+    y = 10;
+    return 'O valor da variável agora é ' + y;   
 }
 
 // Invoque a função criada acima.
 addValue()
 
 // Qual o retorno da função? (Use comentários de bloco).
-/*O retorno da função é uma string - 'O valor da variável agora é VALOR. Onde VALOR é o novo valor da variável.'*/
+/* O valor da variável agora é 10 */
 
 /*
 Crie uma função com as seguintes características:
@@ -69,6 +69,28 @@ Crie uma função com as seguintes características:
 5. Se nenhum argumento for passado, retorne o valor booleano `false`.
 6. E ainda, se nenhuma das condições acima forem atendidas, retorne `null`.
 */
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
+//                         SOLUÇÃO 2                                          //
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
+function softer(w,c,p) {
+    if (w !== undefined && c === undefined && p === undefined) {
+        return w;
+    } else if (w !== undefined && c !== undefined && p === undefined) {
+        return w + c;
+    } else if (w !== undefined && c !== undefined && p !== undefined) {
+        return (w + c) / p;
+    }else if (w === undefined && c === undefined && p === undefined) {
+        return false;
+    } else {
+        return null;
+    }
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
+//                         SOLUÇÃO 1                                          //
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 function functionName(x, y, z) {
         var isx;
         var isy;
