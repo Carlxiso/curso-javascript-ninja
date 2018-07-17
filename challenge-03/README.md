@@ -118,13 +118,18 @@ Faça a `pessoa` fazer 3 aniversários.
 pessoa.fazerAniversario = function (x) {
     pessoa.idade += 3;
 }
-
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
+//                         SOLUÇÃO 2                                          //
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
+pessoa.fazerAniversario()
+pessoa.fazerAniversario()
+pessoa.fazerAniversario()
 /*
 Quantos anos a `pessoa` tem agora? (Use a instrução para responder e
 comentários inline ao lado da instrução para mostrar qual foi a resposta
 retornada)
 */
-pessoa.fazerAniversario() // 30
+pessoa.mostrarIdade() // 'Olá, eu tenho 30 anos!'
 
 /*
 Agora, faça a `pessoa` caminhar alguns metros, invocando o método `andar` 3x,
@@ -175,27 +180,27 @@ método), que será concatenada com a frase de retorno, mostrando a resposta
 correta, de acordo com os dados inseridos no objeto.
 */
 
-
 pessoa.apresentacao = function () {
 
-    var  frase = 'Olá, eu sou o ' + pessoa.nomeCompleto() +', tenho ' + pessoa.idade + ' anos ' + pessoa.altura + ', meu peso é ' + pessoa.peso + ' e, só hoje, eu já caminhei ' + pessoa.caminhouQuantosMetros + ' metros!';
 
-    var sexo = 'olá, eu sou a ';
 
-    var idade = 'ano';
+    var sexo = 'o ';
 
-    var metros = 'metro';
+    var idade = ' anos';
+
+    var metros = ' metros';
 
     if (pessoa.sexo === 'Feminino') {
-        return sexo  + pessoa.nomeCompleto() +', tenho ' + pessoa.idade + ' anos' + pessoa.altura + ', meu peso é ' + pessoa.peso + ' e, só hoje, eu já caminhei ' + pessoa.caminhouQuantosMetros + ' metros!';
-    } else if (pessoa.idade === 1) {
-       return 'Olá, eu sou o ' + pessoa.nomeCompleto() +', tenho ' + pessoa.idade + idade + pessoa.altura + ', meu peso é ' + pessoa.peso + ' e, só hoje, eu já caminhei ' + pessoa.caminhouQuantosMetros + ' metros!';
-   } else if (pessoa.caminhouQuantosMetros === 1) {
-       return 'Olá, eu sou o ' + pessoa.nomeCompleto() +', tenho ' + pessoa.idade + idade + pessoa.altura + ', meu peso é ' + pessoa.peso + ' e, só hoje, eu já caminhei ' + pessoa.caminhouQuantosMetros + metros;
-   }else {
-
-       return frase;
+        sexo = 'a ';
+    }
+     if (pessoa.idade === 1) {
+       idade = 'ano';
    }
+    if (pessoa.caminhouQuantosMetros === 1) {
+       metros = 'metro';
+   }
+      return 'Olá, eu sou ' + sexo + pessoa.nomeCompleto() +', tenho ' + pessoa.idade + idade + pessoa.altura + ', meu peso é ' + pessoa.peso + ' e, só hoje, eu já caminhei ' + pessoa.caminhouQuantosMetros + metros;
+
 }
 
 // Agora, apresente-se ;)
