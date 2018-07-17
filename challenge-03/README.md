@@ -61,7 +61,7 @@ Crie um método chamado `nomeCompleto`, que retorne a frase:
 // return 'Olá o meu nome é ' + pessoa.nome + ' ' + pessoa.sobrenome + '!'
 // }
 pessoa.nomeCompleto = function(){
-return pessoa.nome + ' ' + pessoa.sobrenome + '!'
+return pessoa.nome + ' ' + pessoa.sobrenome
 }
 /*
 Crie um método chamado `mostrarIdade`, que retorne a frase:
@@ -178,7 +178,7 @@ correta, de acordo com os dados inseridos no objeto.
 
 pessoa.apresentacao = function () {
 
-    var  frase = 'Olá, eu sou o ' + pessoa.nomeCompleto() +', tenho ' + pessoa.idade + ' anos ' + pessoa.altura + ', meu peso é ' + pessoa.peso + ' e, só hoje, eu já caminhei ' + pessoa.caminhouQuantosMetros + 'metros!';
+    var  frase = 'Olá, eu sou o ' + pessoa.nomeCompleto() +', tenho ' + pessoa.idade + ' anos ' + pessoa.altura + ', meu peso é ' + pessoa.peso + ' e, só hoje, eu já caminhei ' + pessoa.caminhouQuantosMetros + ' metros!';
 
     var sexo = 'olá, eu sou a ';
 
@@ -187,11 +187,11 @@ pessoa.apresentacao = function () {
     var metros = 'metro';
 
     if (pessoa.sexo === 'Feminino') {
-        return sexo  + pessoa.nomeCompleto() +', tenho ' + pessoa.idade + ' anos' + pessoa.altura + ', meu peso é ' + pessoa.peso + 'e, só hoje, eu já caminhei ' + pessoa.caminhouQuantosMetros + 'metros!';
+        return sexo  + pessoa.nomeCompleto() +', tenho ' + pessoa.idade + ' anos' + pessoa.altura + ', meu peso é ' + pessoa.peso + ' e, só hoje, eu já caminhei ' + pessoa.caminhouQuantosMetros + ' metros!';
     } else if (pessoa.idade === 1) {
-       return idade;
+       return 'Olá, eu sou o ' + pessoa.nomeCompleto() +', tenho ' + pessoa.idade + idade + pessoa.altura + ', meu peso é ' + pessoa.peso + ' e, só hoje, eu já caminhei ' + pessoa.caminhouQuantosMetros + ' metros!';
    } else if (pessoa.caminhouQuantosMetros === 1) {
-       return metros;
+       return 'Olá, eu sou o ' + pessoa.nomeCompleto() +', tenho ' + pessoa.idade + idade + pessoa.altura + ', meu peso é ' + pessoa.peso + ' e, só hoje, eu já caminhei ' + pessoa.caminhouQuantosMetros + metros;
    }else {
 
        return frase;
@@ -199,5 +199,5 @@ pessoa.apresentacao = function () {
 }
 
 // Agora, apresente-se ;)
-?
+pessoa.apresentacao() // 'Olá, eu sou o Xico Parreira, tenho 27 anos 1.8, meu peso é 90 e, só hoje, eu já caminhei 12 metros!'
 ```
