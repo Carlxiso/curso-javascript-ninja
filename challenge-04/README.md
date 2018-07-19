@@ -7,9 +7,9 @@ um único parâmetro como argumento. Essa função deve retornar `true` se o
 equivalente booleano para o valor passado no argumento for `true`, ou `false`
 para o contrário.
 */
-var isTruthy = function functionName(arg) {
+var isTruthy = function (arg) {
     return arg ? true : false;
-}
+};
 
 // Invoque a função criada acima, passando todos os tipos de valores `falsy`.
 isTruthy(false) //false
@@ -24,6 +24,15 @@ isTruthy(null) //false
 Invoque a função criada acima passando como parâmetro 10 valores `truthy`.
 */
 isTruthy(10) // true
+isTruthy('xico') // true
+isTruthy([]) // true
+isTruthy({}) // true
+isTruthy(function() {}) // true
+isTruthy(9 + 25) // true
+isTruthy(3 * 8) // true
+isTruthy([3, 7, 9, 4]) // true
+isTruthy({a: 1, b: 2, c: 3 }}) // true
+isTruthy('abcdef') // true
 
 /*
 Declare uma variável chamada `carro`, atribuindo à ela um objeto com as
@@ -37,14 +46,24 @@ seguintes propriedades (os valores devem ser do tipo mostrado abaixo):
 - `assentos` - Number - cinco por padrão
 - `quantidadePessoas` - Number - zero por padrão
 */
-var carro = {marca: 'Opel', modelo: 'Astra', matricula: 'Bd-20-95', ano: 1990, cor: 'preto', quantasPortas: 2, assentos: 5, quantidadePessoas: 0}
+var carro = {
+    marca: 'Opel',
+    modelo: 'Astra',
+    matricula: 'Bd-20-95',
+    ano: 1990,
+    cor: 'preto',
+    quantasPortas: 2,
+    assentos: 5,
+    quantidadePessoas: 0
+};
 
 /*
 Crie um método chamado `mudarCor` que mude a cor do carro conforme a cor
 passado por parâmetro.
 */
 carro.mudarCor = function (cor) {
-    return carro.cor = cor;
+        carro.cor = cor;
+    // return carro.cor = cor;
 }
 
 /*
@@ -93,24 +112,22 @@ mostrar quantos assentos ainda podem ser ocupados, com a frase:
 - Se couber somente mais uma pessoa, mostrar a palavra "pessoa" no retorno
 citado acima, no lugar de "pessoas".
 */
+
 carro.addPeople = function (add) {
 
-    var numeroPessoas = ' pessoas.'
-    carro.quantidadePessoas += add;
-    if (carro.quantidadePessoas >= carro.assentos) {
-        return 'O carro está completo'
-    }
-    if (carro.quantidadePessoas < carro.assentos) {
-        if (carro.quantidadeDePessoasQueCabem() === 1) {
-            numeroPessoas = ' pessoa.'    
-        }
-        return 'Só cabem mais ' + carro.quantidadeDePessoasQueCabem() + numeroPessoas
-    }
-    return 'Já temos ' + carro.quantidadePessoas + ' pessoas no carro.'
-}
 
-carro.quantidadeDePessoasQueCabem = function () {
-    return  carro.assentos - carro.quantidadePessoas ;
+    var totalPeople = carro.quantidadePessoas + add;
+    if (carro.quantidadePessoas === carro.assentos && totalPeople >= carro.assentos) {
+        return 'O carro está completo';
+    }
+    if (totalPeople > carro.assentos) {
+        var peopleFit = carro.assentos - carro.quantidadePessoas ;
+        var pluralOuSingular = peopleFit === 1 ? ' pessoa' : ' pessoas';
+
+        return 'Só cabem mais ' + peopleFit + pluralOuSingular;
+    }
+    carro.quantidadePessoas += add;
+    return 'Já temos ' + carro.quantidadePessoas + ' pessoas no carro.'
 }
 
 /*
@@ -124,13 +141,13 @@ Qual a cor atual do carro?
 carro.obterCor() // preto
 
 // Mude a cor do carro para vermelho.
-carro.mudarCor('vermelho') // vermelho
+carro.mudarCor('vermelho') // undefined
 
 // E agora, qual a cor do carro?
 carro.obterCor() // vermelho
 
 // Mude a cor do carro para verde musgo.
-carro.mudarCor('verde musgo') // vermelho
+carro.mudarCor('verde musgo') // undefined
 
 // E agora, qual a cor do carro?
 carro.obterCor() // verde musgo
@@ -139,20 +156,20 @@ carro.obterCor() // verde musgo
 carro.obterMarcaModelo() // 'Este carro é um OpelAstra !'
 
 // Adicione 2 pessoas no carro.
-carro.addPeople(2) // 'Só cabem mais 3 pessoas.'
+carro.addPeople(2) // 'Já temos 2 pessoas no carro.'
 
 // Adicione mais 4 pessoas no carro.
-carro.addPeople(4) // 'O carro está completo'
+carro.addPeople(4) // 'Só cabem mais 3 pessoas'
 
 // Faça o carro encher.
-
+carro.addPeople(3) // 'Já temos 5 pessoas no carro.'
 
 // Tire 4 pessoas do carro.
-carro.addPeople(-4) // 'Só cabem mais 3 pessoas.'
+carro.addPeople(-4) // 'Já temos 1 pessoas no carro.'
 
 // Adicione 10 pessoas no carro.
-carro.addPeople(10 // 'O carro está completo'
+carro.addPeople(10) // 'Só cabem mais 4 pessoas'
 
 // Quantas pessoas temos no carro?
-12
+1
 ```
