@@ -90,7 +90,7 @@
     Essa função mostrará a mensagem da operação que criaremos mais abaixo.
     */
     function showOperationMessage( operator, param1, param2 ) {
-        return 'A operação ' + param1 + ' ' +  operator + ' ' + param2;
+        return 'A operação ' + param1 + ' ' +  operator + ' ' + param2 + ' =';
     }
 
     /*
@@ -100,7 +100,7 @@
     'Operação "[OPERATOR]" não permitida!'
     */
     function showErrorMessage( operator ) {
-        return 'Operação ' + operator + ' não permitida!'
+        return 'Operação ' + operator + ' não permitida!';
     }
 
     /*
@@ -134,22 +134,97 @@
     - O segundo, a função de soma, passando os dois operandos.
     - Se "sum" for "false", mostrar no console a mensagem de erro.
     */
-    sum('*'); // OUTPUT false
+    if (sum) {
+
     number1 = 23;
     number2 = 5;
 
-    console.log( showOperationMessage(sum(number1, number2)) );
+    console.log( showOperationMessage( operationSignal, number1, number2 ), sum ( number1, number2 ) );
+    } else {
+    console.log(showErrorMessage( operationSignal ));
+    }
+
     /*
     Repita desde o "PASSO 2" com as operações de subtração, multiplicação,
     divisão e resto. Crie variáveis com os nomes "subtraction",
     "multiplication", "division" e "mod".
     */
-    // ?
+
+    /* - - - - - subtraction - - - - - */
+
+    operationSignal = '-';
+    var subtraction = calculator(operationSignal);
+
+    if (subtraction) {
+
+    number1 = 10;
+    number2 = 5;
+
+    console.log( showOperationMessage( operationSignal, number1, number2 ), subtraction ( number1, number2 ) );
+    } else {
+    console.log(showErrorMessage( operationSignal ));
+    }
+
+    /* - - - - - multiplication - - - - - */
+
+    operationSignal = '*';
+    var multiplication = calculator(operationSignal);
+
+    if (multiplication) {
+
+    number1 = 43;
+    number2 = 6;
+
+    console.log( showOperationMessage( operationSignal, number1, number2 ), multiplication ( number1, number2 ) );
+    } else {
+    console.log(showErrorMessage( operationSignal ));
+    }
+
+    /* - - - - - division - - - - - */
+
+    operationSignal = '/';
+    var division = calculator(operationSignal);
+
+    if (division) {
+
+    number1 = 89;
+    number2 = 2;
+
+    console.log( showOperationMessage( operationSignal, number1, number2 ), division ( number1, number2 ) );
+    } else {
+    console.log(showErrorMessage( operationSignal ));
+    }
+
+    /* - - - - - mod - - - - - */
+
+    operationSignal = '%';
+    var mod = calculator(operationSignal);
+
+    if (mod) {
+
+    number1 = 71;
+    number2 = 2;
+
+    console.log( showOperationMessage( operationSignal, number1, number2 ), mod ( number1, number2 ) );
+    } else {
+    console.log(showErrorMessage( operationSignal ));
+    }
 
     /*
     Repita o PASSO 2 novamente, mas passando um operador inválido, para ver se
     a mensagem de erro será mostrada no console.
     */
-    // ?
+    operationSignal = 'x';
+    var mod = calculator(operationSignal);
+
+    if (mod) {
+
+    number1 = 71;
+    number2 = 2;
+
+    console.log( showOperationMessage( operationSignal, number1, number2 ), mod ( number1, number2 ) );
+    } else {
+    console.log(showErrorMessage( operationSignal ));
+    }
 
 })(); // End IIFE
