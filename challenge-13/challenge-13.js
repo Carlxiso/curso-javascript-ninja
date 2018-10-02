@@ -29,21 +29,22 @@
     Adicione 3 novos estados da região Norte no início do array e mostre no console.
     */
     console.log( '\nMais estados adicionados:' );
-    console.log(brasil.unshift('Amazonas', 'Acre', 'Amapá'));
+    brasil.unshift('Amazonas', 'Acre', 'Amapá');
+    console.log(brasil);
 
 
     /*
     Remova o primeiro estado do array `brasil` e mostre-o no console.
     */
     console.log( '\nEstado removido:' );
-    console.log(brasil.shift(1));
+    console.log(brasil.shift());
 
     /*
     Crie um novo array chamado `newSul`, que receba somente os estados do sul,
     pegando do array `brasil`. Não remova esses itens de `brasil`.
     */
-    var newSul = [];
-    newSul.push(brasil.slice(2, 5));
+    var newSul = brasil.slice(2, 5);
+
 
 
     /*
@@ -74,14 +75,14 @@
     Remova de `brasil` os estados do `sudeste`, colocando-os em uma variável
     chamada `newSudeste`.
     */
-    var newSudeste = [];
-    newSudeste.push(brasil.splice(5));
+    var newSudeste = brasil.splice(5);
+
 
     /*
     Adicione os estados do `nordeste` ao array `brasil`. Esses estados devem
     ficar no mesmo nível que os estados já existentes, não em um array separado.
     */
-    brasil.splice( 5,0, 'Alagoas', 'Bahia', 'Ceará', 'Maranhão', 'Paraíba', 'Piauí', 'Pernambuco', 'Rio Grande do Norte', 'Sergipe' );
+    brasil = brasil.concat(nordeste);
 
     /*
     Mostre no console os estados em `newSudeste`.
@@ -146,15 +147,13 @@
     */
     console.log( '\nCeará está incluído em `brasil`?' );
     var ceara = brasil.some(function (estado) {
-        // console.log(estado);
-        if (estado === 'Ceará') {
-            console.log("Ceará está incluído!");
-            // return "Ceará está incluído!";
-        };
-            console.log("Ceará não foi incluído :(");
-            // return "Ceará não foi incluído :("
+                return estado === 'Ceará';
     });
-        // console.log(ceara);
+        console.log(
+            ceara
+            ? 'Ceará está incluído!'
+            : 'Ceará não foi incluído :('
+        );
     /*
     Percorra o array `newBrasil` e crie um novo array que some 1 no ID de cada
     objeto desse array, e adicione a frase abaixo na propriedade `estado`:
@@ -162,28 +161,37 @@
     Atribua o novo array a uma variável chamada `map`.
     */
     var map = newBrasil.map(function(estado, id) {
-        newBrasil.id + 1;
-        return estado +  " pertence ao Brasil."
+        // - - OPÇÃO 2 - - //
+        return {
+            id: id + 1,
+            estado: estado.estado + ' pertence ao Brasil.'
+        };
+        // - - OPÇÃO 1 - - //
+        // estado.id ++;
+        // id.estado +=  " pertence ao Brasil."
+        // return estado;
     });
 
-    console.log(map);
+
     /*
     Mostre no console o array criado acima:
     */
     console.log( '\nnewBrasil agora com mais informações:' );
-    // console.log(newBrasil, map);
+    console.log( map );
 
 
     /*
     Filtre o array criado acima, retornando somente os estados que tiverem
     ID par. Atribua o valor à uma variável chamada `filter`.
     */
-    // ?
+    var filter = map.filter(function (estado, id) {
+            return estado.id % 2 === 0;
+    });
 
     /*
     Mostre o array filtrado acima no console.
     */
     console.log( '\nEstados com ID par:' );
-    // ?
+    console.log(filter);
 
 })(); // END IIFE
