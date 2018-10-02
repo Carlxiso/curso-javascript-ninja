@@ -102,9 +102,9 @@
     - `id`: que será o índice do array `brasil`,
     - `estado`: que será o estado do array `brasil`.
     */
-    // var sum = 0;
-    brasil.forEach(function (item, id) {
-            return newBrasil = {item: item, id: id};
+    var newBrasil= [];
+    brasil.forEach(function (estado, id) {
+        return newBrasil.push ({ id: id, estado: estado });
     });
 
     /*
@@ -121,7 +121,20 @@
     - "Nem todos os estados tem mais de 7 letras!"
     */
     console.log( '\nTodos os estados de `brasil` tem mais de 7 letras?' );
-    // ?
+
+    var letras = brasil.every(function (estado) {
+
+        // console.log(estado.length);
+
+        if (estado.length > 7 ) {
+            console.log("Sim, todos os estados tem mais de 7 letras!");
+            // return "Sim, todos os estados tem mais de 7 letras!";
+        };
+            console.log("Nem todos os estados tem mais de 7 letras!");
+            // return "Nem todos os estados tem mais de 7 letras!";
+    });
+    console.log(letras);
+
 
     /*
     Percorra o array `brasil` e verifique se o Ceará está incluído, atribuindo o
@@ -132,21 +145,34 @@
     - "Ceará não foi incluído :("
     */
     console.log( '\nCeará está incluído em `brasil`?' );
-    // ?
-
+    var ceara = brasil.some(function (estado) {
+        // console.log(estado);
+        if (estado === 'Ceará') {
+            console.log("Ceará está incluído!");
+            // return "Ceará está incluído!";
+        };
+            console.log("Ceará não foi incluído :(");
+            // return "Ceará não foi incluído :("
+    });
+        // console.log(ceara);
     /*
     Percorra o array `newBrasil` e crie um novo array que some 1 no ID de cada
     objeto desse array, e adicione a frase abaixo na propriedade `estado`:
     - "[ESTADO] pertence ao Brasil."
     Atribua o novo array a uma variável chamada `map`.
     */
-    // ?
+    var map = newBrasil.map(function(estado, id) {
+        newBrasil.id + 1;
+        return estado +  " pertence ao Brasil."
+    });
 
+    console.log(map);
     /*
     Mostre no console o array criado acima:
     */
     console.log( '\nnewBrasil agora com mais informações:' );
-    // ?
+    // console.log(newBrasil, map);
+
 
     /*
     Filtre o array criado acima, retornando somente os estados que tiverem
