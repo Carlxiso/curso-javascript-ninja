@@ -19,13 +19,11 @@
     console.log( 'As letras do seu nome:' );
     var name = 'Albino';
 
-    console.log(name.charAt(0) + " é a " + name.indexOf('A') + "ª letra do meu nome.");
-    console.log(name.charAt(1) + " é a " + name.indexOf('l') + "ª letra do meu nome.");
-    console.log(name.charAt(2) + " é a " + name.indexOf('b') + "ª letra do meu nome.");
-    console.log(name.charAt(3) + " é a " + name.indexOf('i') + "ª letra do meu nome.");
-    console.log(name.charAt(4) + " é a " + name.indexOf('n') + "ª letra do meu nome.");
-    console.log(name.charAt(5) + " é a " + name.indexOf('o') + "ª letra do meu nome.");
+    for (var i = 0, len = name.length; i < len; i++) {
+        // console.log(name.charAt(i) + " é a " + ( i + 1 ) +  "ª letra do meu nome.");
+            console.log(name[i] + " é a " + ( i + 1 ) + "ª letra do meu nome.");
 
+    };
     /*
     - Declare uma variável chamada `fullName`, que receba seu nome completo,
     escrito no formato de slug (caixa baixa e palavras separadas por um traço).
@@ -40,8 +38,12 @@
     */
     console.log( '\nNome convertido à partir de um slug:' );
     var fullName = 'albino-zé';
-    var newFullName = fullName.charAt(0).toUpperCase() + fullName.slice(1, 6) + ' ' + fullName.charAt(7).toUpperCase() + fullName.slice(8);
-    console.log(newFullName);
+
+    var newFullName = fullName.split( '-' ).map(function (name) {
+            return name.charAt(0).toUpperCase() + name.slice(1);
+    });
+    console.log(fullName);
+    console.log(newFullName.join( ' ' ));
 
     /*
     - Crie um array com 5 nomes. Reduza esses nomes a uma única string, separando
@@ -55,11 +57,12 @@
     console.log( '\nMeus amigos:' );
     var arrNames = [ 'Antónia', 'Beatriz', 'Salema', 'Carolina', 'Pedro' ];
 
-    var reduceNames = arrNames.reduce(function (aggregate, current) {
-            return aggregate + current + ", ";
-    },0);
+    var reduceNames = arrNames.reduce(function (aggregate, current, index) {
+        var brake = arrNames.length - 1 === index ? ' e ' : ' , ';
+            return aggregate + brake + current ;
+    }).concat(" são meus amigos.");
 
-    console.log(reduceNames + " são meus amigos.");
+    console.log(reduceNames );
 
     /*
     Usando o replace(), faça a string "Roberto" virar "Roberta".
@@ -92,14 +95,18 @@
     */
     console.log( '\nNome com letras intercaladas entre caixa alta e baixa:' );
     var myName = 'Albino';
+    var newName = [];
+    for (var i = 0, len = myName.length; i < len; i++) {
+        newName.push(i % 2 === 0 ? myName[i].toUpperCase() :  myName[i].toLowerCase());
+    }
+    console.log(newName.join(' '));
 
-    var upperAndLowerCase = myName.charAt(0).toUpperCase() + myName.charAt(1).toLowerCase() + myName.charAt(2).toUpperCase();
-    var changeName = function(name) {
-        return upperAndLowerCase ;
+    // var upperAndLowerCase = myName.charAt(0).toUpperCase() + myName.charAt(1).toLowerCase() + myName.charAt(2).toUpperCase();
+    // var changeName = function(name) {
+    //     return upperAndLowerCase ;
+    //
+    // };
 
-    };
-
-    console.log(changeName());
 
 
 
