@@ -1,0 +1,13 @@
+.box {
+  width: 200px;
+  height: 200px;
+  background: rgba(255,0,0,1);
+  transition-property: transform background;
+  transition-duration: 2s;
+  transition-delay: 2s;
+}
+
+.box:hover {
+  transform: rotate(90deg);
+  background: rgba(255,0,0,0);
+}
