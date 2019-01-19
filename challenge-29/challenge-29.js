@@ -1,6 +1,6 @@
-(function() {
+(function($) {
   'use strict';
-
+console.log('Rock On');
   /*
   Vamos estruturar um pequeno app utilizando módulos.
   Nosso APP vai ser um cadastro de carros. Vamos fazê-lo por partes.
@@ -36,4 +36,80 @@
   que será nomeado de "app".
   */
 
-})();
+  var app = (function appController() {
+      return {
+        init: function () {
+            console.log( 'app initialize' );
+            this.companyInfo();
+            this.initEvents();
+        },
+        initEvents: function initEvents() {
+            $( '[data-js="form-register"]' ).on( 'submit', this.handleSubmit );
+        },
+
+        handleSubmit: function handleSubmit( e ) {
+            e.preventDefault();
+            console.log( 'submit' );
+            var $tableCar = $( '[data-js="table-car"]' ).get();
+            $tableCar.appendChild( app.creatNewCar() );
+        },
+
+        creatNewCar: function creatNewCar() {
+            var $fragment = document.createDocumentFragment();
+            var $tr = document.createElement( 'tr' );
+            var $tdImage = document.createElement( 'td' );
+            var $image = document.createElement( 'img' );
+            var $tdBrand = document.createElement( 'td' );
+            var $tdYear = document.createElement( 'td' );
+            var $tdBoard = document.createElement( 'td' );
+            var $tdColor = document.createElement( 'td' );
+
+            $image.setAttribute( 'src', $( '[data-js="Image-car"]' ).get().value );
+            $tdImage.appendChild( $image );
+
+
+            $tdBrand.textContent = $( '[data-js="brand-model"]' ).get().value;
+            $tdYear.textContent = $( '[data-js="year"]' ).get().value;
+            $tdBoard.textContent = $( '[data-js="board"]' ).get().value;
+            $tdColor.textContent = $( '[data-js="colour"]' ).get().value;
+
+            $tr.appendChild( $tdImage );
+            $tr.appendChild( $tdBrand );
+            $tr.appendChild( $tdYear );
+            $tr.appendChild( $tdBoard );
+            $tr.appendChild( $tdColor );
+
+            return $fragment.appendChild( $tr );
+        },
+
+        companyInfo: function companyInfo() {
+            console.log( 'company Info' );
+            var ajax = new XMLHttpRequest();
+            ajax.open( 'GET', 'company.json', true );
+            ajax.send();
+            ajax.addEventListener( 'readystatechange', this.getCompanyInfo, false );
+
+        },
+
+        getCompanyInfo: function getCompanyInfo() {
+
+                var data = JSON.parse( this.responseText );
+                var $companyName = $( '[data-js="company-name"]' ).get();
+                var $companyPhone = $( '[data-js="company-phone"]' ).get();
+                $companyName.textContent = data.name;
+                $companyPhone.textContent = data.phone;
+                if ( !app.isReady.call( this ) )
+                return;
+
+        },
+
+        isReady: function isReady(){
+            return this.ready === 4 && this.status === 200;
+        }
+      };
+  })();
+
+  app.init();
+   console.log( new DOM( 'input' ));
+   console.log( {} instanceof Object );
+})(window.DOM);
